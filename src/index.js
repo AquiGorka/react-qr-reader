@@ -159,10 +159,7 @@ module.exports = class Reader extends Component {
       ? Promise.resolve(constraints)
       : getDeviceId(facingMode).then(deviceId => ({ deviceId }))
 
-    vConstraintsPromise
-      .then(video => navigator.mediaDevices.getUserMedia({ video }))
-      .then(this.handleVideo)
-      .catch(onError)
+    this.handleVideo()
   }
   handleVideo(cameraStream) {
     let stream = this.props.videoStream
